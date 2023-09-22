@@ -1,0 +1,14 @@
+###get db information
+GET http://localhost:3000/
+
+###send new id to serever
+POST http://localhost:3000/
+Content-Type: application/json
+
+{
+  "name":"soheil+",
+  "lastName":"moonesi",
+  "email":"soheil.moonesi@gmail.com",
+  "password":"123",
+  "birthDate":"1371/6/16"
+}
