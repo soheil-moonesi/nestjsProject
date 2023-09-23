@@ -1,4 +1,12 @@
-import { Controller, Get, Res, Body, Post, Param } from "@nestjs/common";
+import {
+  Controller,
+  Get,
+  Res,
+  Body,
+  Post,
+  Param,
+  NotFoundException,
+} from "@nestjs/common";
 import { Response } from "express";
 import { CreateRegisterDto } from "./create-User.dto";
 import { AppServiceRegister } from "app.service";
@@ -28,7 +36,11 @@ export class AppController {
   }
 
   @Get("/:id")
-  getUser(@Param("id") id: string) {
-    return this.appServiceRegister.findAll();
+  async getUser(@Param("id") id: string) {
+    const user = await this.appServiceRegister.findOne(id);
+    if (!user) {
+      throw new NotFoundException("user not found");
+    }
+    return user;
   }
 }

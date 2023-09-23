@@ -7,6 +7,11 @@ export class AppServiceRegister {
   findAll() {
     return this.appRepository.findAll();
   }
+
+  findOne(id:string) {
+    return this.appRepository.findOne(id);
+  }
+
   create(message: string) {
     return this.appRepository.create(message);
   }
